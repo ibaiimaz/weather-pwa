@@ -191,7 +191,7 @@ body {
   overflow-y: auto;
   -webkit-overflow-scrolling: touch; }
 
-.dialog-container {
+/* .dialog-container {
   background: rgba(0, 0, 0, 0.57);
   position: fixed;
   left: 0;
@@ -240,7 +240,7 @@ body {
 
 .dialog-buttons {
   padding: 8px !important;
-  float: right; }
+  float: right; } */
 
 .card {
   padding: 16px;
@@ -404,3 +404,78 @@ body {
   .mdl-button--primary.mdl-button--primary.mdl-button--raised, .mdl-button--primary.mdl-button--primary.mdl-button--fab {
     color: white;
     background-color: #3f51b5; }
+
+
+
+    .modal {
+      position: fixed;
+      width: 100vw;
+      height: 100vh;
+      left: 0;
+      top: 0;
+      padding: 0.5rem;
+      z-index: 90;
+      background: rgba(26, 35, 45, 0.7);
+    }
+    .modal .modal-content {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      -webkit-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+      background: #fff;
+      max-width: 420px;
+      min-width: 350px;
+      min-height: 4rem;
+      -webkit-box-shadow: 0 0 12px rgba(0, 0, 0, 0.5);
+              box-shadow: 0 0 12px rgba(0, 0, 0, 0.5);
+      border-radius: 4px;
+      text-align: center;
+      font-size: 1.2rem;
+    }
+
+    .modal .modal-content select,
+    .modal .modal-content button {
+      font-size: 1.4rem;
+      min-width: 115px;
+    }
+    .modal .modal-content .modal-header {
+      padding: 1.5rem;
+      position: relative;
+      font-size: 2rem;
+      font-style: normal;
+    }
+    .modal .modal-content .modal-header .close {
+      position: absolute;
+      right: 1rem;
+      top: 50%;
+      -webkit-transform: translateY(-50%);
+      transform: translateY(-50%);
+      color: #808896 !important;
+    }
+    .modal .modal-content .modal-header .close:before {
+      content: "\e926";
+      font-family: 'quanthum';
+      font-size: 1.4rem;
+      line-height: 1.35;
+      font-weight: normal;
+      text-rendering: auto;
+      -webkit-font-smoothing: antialiased;
+      margin-right: 0.25em;
+      text-indent: 0;
+      font-size: 2rem;
+    }
+    .modal .modal-content .modal-header .close:hover {
+      color: #2869ED !important;
+    }
+    .modal .modal-content .modal-body {
+      padding: 2rem;
+    }
+    .modal .modal-content .modal-footer {
+      text-align: center;
+      padding: 0 2rem 2rem;
+    }
+    .modal .modal-content .modal-footer .button,
+    .modal .modal-content .modal-footer a {
+      margin: 0 0.5rem;
+    }

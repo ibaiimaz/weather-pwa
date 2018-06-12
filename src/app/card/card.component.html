@@ -1,0 +1,40 @@
+<div
+  class="card cardTemplate weather-forecast">
+  <div class="city-key" hidden></div>
+  <div class="card-last-updated" hidden></div>
+  <div class="location">{{card.label}}</div>
+  <div class="date">{{current.date}}</div>
+  <div class="description">{{current.text}}</div>
+  <div class="current">
+    <div class="visual">
+      <div class="icon" [ngClass]="getIconClass(current.code)"></div>
+      <div class="temperature">
+        <span class="value">{{current.temp | number}}</span><span class="scale">°F</span>
+      </div>
+    </div>
+    <div class="description">
+      <div class="humidity">{{humidity | number}}%</div>
+      <div class="wind">
+        <span class="value">{{wind.speed | number}}</span>
+        <span class="scale">mph</span>
+        <span class="direction">{{wind.direction}}</span>°
+      </div>
+      <div class="sunrise">{{sunrise}}</div>
+      <div class="sunset">{{sunset}}</div>
+    </div>
+  </div>
+  <div class="future">
+    <div
+      *ngFor="let daily of forecast; index as i"
+      class="oneday">
+      <div class="date">{{getDayOfWeek(i)}}</div>
+      <div class="icon" [ngClass]="getIconClass(daily.code)"></div>
+      <div class="temp-high">
+        <span class="value">{{daily.high | number}}</span>°
+      </div>
+      <div class="temp-low">
+        <span class="value">{{daily.low | number}}</span>°
+      </div>
+    </div>
+  </div>
+</div>
