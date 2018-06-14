@@ -7,9 +7,7 @@ export class WeatherService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getCities (key: string) {
-    const statement = 'select * from weather.forecast where woeid=' + key;
-    const url = 'https://query.yahooapis.com/v1/public/yql?format=json&q=' + statement;
+  getCities (url: string) {
     return this.httpClient.get(url);
   }
 }

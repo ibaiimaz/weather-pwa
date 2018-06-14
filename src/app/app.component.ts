@@ -114,9 +114,35 @@ export class AppComponent implements OnInit, OnChanges {
   async getForecast(key, label) {
     try {
       console.log('city', key);
+
+      const statement = 'select * from weather.forecast where woeid=' + key;
+      const url = 'https://query.yahooapis.com/v1/public/yql?format=json&q=' + statement;
+
+      if ('caches' in window) {
+        console.log('before caches.match');
+        console.log('url_', url);
+        /*
+         * Check if the service worker has already cached this city's weather
+         * data. If the service worker has the data, then display the cached
+         * data while the app fetches the latest data.
+         */
+        caches.match(url).then(function(respons) {
+          console.log('respons', respons);
+          if (respons) {
+            respons.json().then(function updateFromCache(json) {
+              const resul = json.query.results;
+              resul.key = key;
+              resul.label = label;
+              resul.created = json.query.created;
+              this.updateForecastCard(resul);
+            });
+          }
+        });
+      }
+
       this.updateForecastCard(initialWeatherForecast);
 
-      const resp = await this.weatherService.getCities(key).toPromise();
+      const resp = await this.weatherService.getCities(url).toPromise();
       console.log('resp', (<any>resp).query.results);
       const response = (<any>resp);
       const results = response.query.results;
