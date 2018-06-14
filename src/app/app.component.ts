@@ -119,15 +119,12 @@ export class AppComponent implements OnInit, OnChanges {
       const url = 'https://query.yahooapis.com/v1/public/yql?format=json&q=' + statement;
 
       if ('caches' in window) {
-        console.log('before caches.match');
-        console.log('url_', url);
         /*
          * Check if the service worker has already cached this city's weather
          * data. If the service worker has the data, then display the cached
          * data while the app fetches the latest data.
          */
         caches.match(url).then(function(respons) {
-          console.log('respons', respons);
           if (respons) {
             respons.json().then(function updateFromCache(json) {
               const resul = json.query.results;

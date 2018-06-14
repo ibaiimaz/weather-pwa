@@ -1,3 +1,7 @@
 // "sw": "sw-precache --root=dist --config=sw-precache-config.js",
 
 npm run static-serve
+
+https://weather-pwa-85902.firebaseapp.com
+
+https://weather-ng-pwa.firebaseapp.com/
